@@ -1,0 +1,19 @@
+node{'build-in'}{
+  stage{'clone from repository'} {
+    checkout scm
+  }
+  
+  stage{'Show env vars'} {
+    sh "echo ${env.WORKSPACE}"
+  }
+
+ stage{'Execute script'} {
+    echo 'Hello World'
+    sh 'echo "testParameter"'
+    sh 'echo "Hello JENKINS Pipeline"'
+  }
+
+ stage{'Clean up'} {
+   cleanWs deleteDirs: true
+  }
+}
