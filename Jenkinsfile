@@ -30,7 +30,7 @@ pipeline {
         }
         stage('Email') {
             steps {
-                mail bcc: '', body: 'This is a test email!', cc: '', from: '', replyTo: '', subject: 'Success Jenkins', to: 'boca_ovidiu@yahoo.ca'
+                emailext body: 'This is an email for test!', subject: 'Success build', to: 'boca_ovidiu@yahoo.ca'
             }         
         }
     }
