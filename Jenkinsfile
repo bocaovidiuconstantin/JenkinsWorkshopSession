@@ -5,10 +5,15 @@ pipeline {
     agent any
 
     stages {
-        stage('TTTTT') {
+        stage('Clean WS') {
+            steps {
+                cleanWs()
+            }         
+        }
+        stage('My Stage') {
             steps {
                 echo 'Hello World'
-              sh 'echo ${testParameter}'
+                sh 'echo ${testParameter}'
                 sh 'echo "Hello JENKINS Pipeline"'
             }
         }
