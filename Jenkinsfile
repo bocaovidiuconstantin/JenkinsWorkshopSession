@@ -28,5 +28,10 @@ pipeline {
                 cleanWs()
             }         
         }
+        stage('Email') {
+            steps {
+                emailext body: 'This is an email for test!', subject: 'Success build', to: 'boca_ovidiu@yahoo.ca'
+            }         
+        }
     }
 }
