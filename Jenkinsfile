@@ -5,17 +5,28 @@ pipeline {
     agent any
 
     stages {
-        stage('Clean WS') {
-            steps {
-                cleanWs()
-            }         
-        }
+        
         stage('My Stage') {
             steps {
                 echo 'Hello World'
                 sh 'echo ${testParameter}'
                 sh 'echo "Hello JENKINS Pipeline"'
             }
+        }
+        stage('Execute Shell') {
+            agent{
+                label 'built-in'
+            }
+            steps {
+                sh 'ls'
+                sh 'chmod +x HelloWorld.sh'
+                sh './HelloWorld.sh'
+            }
+        }
+        stage('Clean WS') {
+            steps {
+                cleanWs()
+            }         
         }
     }
 }
